@@ -1,0 +1,69 @@
+:root, .light, .light-theme {
+  --blue-1: #fcfcfc;
+  --blue-2: #f9f9f9;
+  --blue-3: #efefef;
+  --blue-4: #e7e7e7;
+  --blue-5: #e0e0e0;
+  --blue-6: #d8d8d8;
+  --blue-7: #ccc;
+  --blue-8: #b9b9b9;
+  --blue-9: #242424;
+  --blue-10: #393939;
+  --blue-11: #646464;
+  --blue-12: #222;
+
+  --blue-a1: #00000003;
+  --blue-a2: #00000006;
+  --blue-a3: #00000010;
+  --blue-a4: #00000018;
+  --blue-a5: #0000001f;
+  --blue-a6: #00000027;
+  --blue-a7: #00000033;
+  --blue-a8: #00000046;
+  --blue-a9: #000000db;
+  --blue-a10: #000000c6;
+  --blue-a11: #0000009b;
+  --blue-a12: #000000dd;
+
+  --blue-contrast: #fff;
+  --blue-surface: #f8f8f8cc;
+  --blue-indicator: #242424;
+  --blue-track: #242424;
+}
+
+@supports (color: color(display-p3 1 1 1)) {
+  @media (color-gamut: p3) {
+    :root, .light, .light-theme {
+      --blue-1: oklch(99.1% 0 none);
+      --blue-2: oklch(98.1% 0 none);
+      --blue-3: oklch(95.4% 0 none);
+      --blue-4: oklch(92.9% 0 none);
+      --blue-5: oklch(90.7% 0 none);
+      --blue-6: oklch(88.1% 0 none);
+      --blue-7: oklch(84.7% 0 none);
+      --blue-8: oklch(78.6% 0 none);
+      --blue-9: oklch(26% 0 none);
+      --blue-10: oklch(34.4% 0 none);
+      --blue-11: oklch(50.4% 0 none);
+      --blue-12: oklch(25.3% 0 none);
+
+      --blue-a1: color(display-p3 0 0 0 / 0.0118);
+      --blue-a2: color(display-p3 0 0 0 / 0.0235);
+      --blue-a3: color(display-p3 0 0 0 / 0.0627);
+      --blue-a4: color(display-p3 0 0 0 / 0.0941);
+      --blue-a5: color(display-p3 0 0 0 / 0.1216);
+      --blue-a6: color(display-p3 0 0 0 / 0.1529);
+      --blue-a7: color(display-p3 0 0 0 / 0.2);
+      --blue-a8: color(display-p3 0 0 0 / 0.2745);
+      --blue-a9: color(display-p3 0 0 0 / 0.8588);
+      --blue-a10: color(display-p3 0 0 0 / 0.7765);
+      --blue-a11: color(display-p3 0 0 0 / 0.6078);
+      --blue-a12: color(display-p3 0 0 0 / 0.8667);
+
+      --blue-contrast: #fff;
+      --blue-surface: color(display-p3 0.9725 0.9725 0.9725 / 0.8);
+      --blue-indicator: oklch(26% 0 none);
+      --blue-track: oklch(26% 0 none);
+    }
+  }
+}
