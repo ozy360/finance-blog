@@ -20,8 +20,9 @@ button,
 
 .heading {
   font-family: var(--font-heading-sans) !important;
-  @apply !text-base tracking-[5px] uppercase mb-8 font-medium
+  @apply text-base tracking-[5px] uppercase mb-10
 }
+
 
 .body {
   font-family: var(--font-body-serif) !important;
@@ -70,6 +71,8 @@ label {
 .text-body > p {
   @apply pb-2 
 }
+
+
 
 
 

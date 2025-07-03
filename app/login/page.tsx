@@ -37,24 +37,17 @@ export default function Home() {
   return (
     <div className="flex items-center justify-center h-screen">
       <div className="px-4 mx-auto w-[95%] sm:w-[50%] lg:w-[35%] space-y-4 mb-10">
-        <div></div>
         <div>
           <Text as="div" size="6" weight="bold">
             Gain access
           </Text>
-        </div>
-        <div>
-          <div className="text-right">
-            <span>
-              <b>Email: </b>
-              {process.env.NEXT_PUBLIC_ADMIN_EMAIL}
-            </span>
-            <br />
-            <span>
-              <b>Password: </b>
-              {process.env.NEXT_PUBLIC_ADMIN_PASS}
-            </span>
-          </div>
+          <br />
+          <p>
+            <b>Email:</b> {process.env.NEXT_PUBLIC_ADMIN_EMAIL}
+          </p>
+          <p>
+            <b>Password:</b> {process.env.NEXT_PUBLIC_ADMIN_PASS}
+          </p>
         </div>
 
         <div>
@@ -106,9 +99,12 @@ export default function Home() {
         )}
 
         <div className="mt-4 text-center">
-          {/* <Link>Back home</Link> */}
-          {/* <Button variant="surface" style={{ width: "100%" }} > */}
-          <Button variant="surface" size="3" style={{ width: "100%" }}>
+          <Button
+            variant="surface"
+            size="3"
+            style={{ width: "100%" }}
+            onClick={() => router.push("/")}
+          >
             Back home
           </Button>
         </div>

@@ -440,7 +440,8 @@ export default function Admin() {
                     ? x
                     : x.title.toLowerCase().includes(search);
                 })
-                ?.reverse()
+                // ?.slice(0, Number(loadMore))
+                // ?.reverse()
                 ?.map((x: any, index) => (
                   <Card
                     key={index}
@@ -482,6 +483,7 @@ export default function Admin() {
                           onClick={() => fetchPost(x.slug)}
                         >
                           Edit
+                          {/* <SquarePen size={18} strokeWidth={2} /> */}
                         </Button>
                         <Button
                           variant="soft"

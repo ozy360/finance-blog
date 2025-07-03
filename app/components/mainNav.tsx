@@ -40,7 +40,12 @@ export default function MainNav() {
             />{" "}
             <span className="inline-block">{process.env.NEXT_PUBLIC_NAME}</span>
           </Link>
-
+          {/* <Link
+            href={"/"}
+            className="logotext text-3xl font-semibold md:hidden"
+          >
+            {process.env.NEXT_PUBLIC_NAME}
+          </Link> */}
           <Card
             className="rounded-md lg:hidden cursor-pointer !p-2 text-gray-500"
             onClick={() => setShow(!show)}

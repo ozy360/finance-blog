@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import {
+  IBM_Plex_Serif,
   Source_Serif_4,
   Playfair_Display,
   Schibsted_Grotesk,
@@ -16,9 +17,9 @@ const heading = Schibsted_Grotesk({
   subsets: ["latin"],
 });
 
-const body = Source_Serif_4({
+const body = IBM_Plex_Serif({
   variable: "--font-body-serif",
-  weight: ["200", "300", "400", "500", "600", "700", "800", "900"],
+  weight: ["200", "300", "400", "500", "600", "700"],
   // weight: ["400", "700"],
 
   subsets: ["latin"],

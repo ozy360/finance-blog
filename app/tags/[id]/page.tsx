@@ -1,136 +1,27 @@
-"use client";
+import { notFound } from "next/navigation";
+import TagClient from "./tagClient";
 
-import axios from "axios";
-import { useRouter, useParams } from "next/navigation";
-import { Button, Card } from "@radix-ui/themes";
-import { useState, useEffect } from "react";
-import MainPage from "@/app/components/mainPage";
-import MainPagination from "@/app/components/mainPagination";
-import LoadingSpinner from "@/app/components/loadingSpinner";
+interface PageProps {
+  params: Promise<{ id: string }>;
+}
 
-export default function Tags() {
-  const router = useRouter();
-  const params = useParams();
-  const [isLoading, setIsLoading] = useState<boolean>();
-  const [currentItems, setCurrentItems] = useState<String[]>([]);
-  const [uid, setUid] = useState<String>();
+export default async function ViewPost({ params }: PageProps) {
+  const { id } = await params;
 
-  const handleCurrentItemsChange = (items: String[]) => {
-    setCurrentItems(items);
-  };
+  const url =
+    process.env.NODE_ENV === "development"
+      ? "http://localhost:3000"
+      : process.env.NEXT_PUBLIC_URL || "https://finance-blog-phi.vercel.app/";
 
-  useEffect(() => {
-    const id = String(params.id);
-    setUid(id);
-    fetchPosts();
-  }, []);
+  const allPostsRes = await fetch(`${url}/api/post/`, {
+    cache: "no-store",
+  });
 
-  const [postsData, setPostsData] = useState<String[]>([]);
-  const [loading, setLoading] = useState(true);
-
-  async function fetchPosts() {
-    setLoading(true);
-    try {
-      const res = await fetch("/api/post");
-
-      const cdata = await res.json();
-      if (!cdata.error) {
-        setPostsData(cdata);
-      }
-    } catch (err: any) {
-      console.error("Error fetching user:", err);
-      setLoading(false);
-    } finally {
-      setLoading(false);
-    }
+  if (!allPostsRes.ok) {
+    notFound();
   }
 
-  const filteredItems = currentItems
-    ?.filter((x: any) => x.tags.split(",").includes(uid))
-    .reverse();
+  const allPosts = await allPostsRes.json();
 
-  if (!uid) {
-    return (
-      <div>
-        <LoadingSpinner />
-      </div>
-    );
-  }
-
-  return (
-    <>
-      <MainPage>
-        <div className="columns-1 space-y-7 columns-1 sm:gap-8 md:columns-2 [&>img:not(:first-child)]:mt-8">
-          {filteredItems && filteredItems.length > 0 ? (
-            filteredItems.map((x: any, index: number) => (
-              <Card className="space-y-4 p-2 break-inside-avoid" key={index}>
-                <div className="roundedimg">
-                  <div
-                    dangerouslySetInnerHTML={{
-                      __html: x.imageUrl,
-                    }}
-                  />
-                </div>
-                <div className="text-sm text-gray-600">
-                  {new Date(x.date).toLocaleDateString("en-US", {
-                    year: "numeric",
-                    month: "short",
-                    day: "numeric",
-                  })}
-                </div>
-                <div className="flex gap-2 flex-wrap">
-                  {x.tags &&
-                    x.tags.split(",").map((tagx: string, tagxIndex: number) => (
-                      <Button
-                        variant="soft"
-                        size="1"
-                        key={tagxIndex}
-                        onClick={() => router.push(`/tags/${tagx}`)}
-                      >
-                        {tagx}
-                      </Button>
-                    ))}
-                </div>
-                <div className="mt-4">{x.title}</div>
-
-                <Button
-                  variant="surface"
-                  size="2"
-                  onClick={() =>
-                    router.push(
-                      `/v/${x.title
-                        .replace(/[^\w\s]/g, "")
-                        .split(" ")
-                        .join("-")}`
-                    )
-                  }
-                >
-                  Read more
-                </Button>
-                {/* <div
-          className=""
-          dangerouslySetInnerHTML={{
-            __html: x.content
-              .replaceAll("&lt;", "<")
-              .replaceAll("&gt;", ">")
-              .slice(0, 300),
-          }}
-        /> */}
-              </Card>
-            ))
-          ) : (
-            <div className="text-center text-gray-500 mt-10">
-              No posts found with this tag.
-            </div>
-          )}
-        </div>
-        <div>
-          <MainPagination
-            postsData={postsData}
-            onCurrentItemsChange={handleCurrentItemsChange}
-          />
-        </div>
-      </MainPage>
-    </>
-  );
+  return <TagClient postsData={allPosts} uid={id} />;
 }

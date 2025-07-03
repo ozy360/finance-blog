@@ -3,11 +3,14 @@ import postdb from "@/app/models/post";
 
 import { NextResponse, NextRequest } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
     await connectDB();
-    const body = await req.json();
-    const { id } = body;
+    const id = request.nextUrl.pathname.split("/").pop();
+
+    if (!id) {
+      return new NextResponse("Missing 'id' parameter", { status: 400 });
+    }
 
     const alldata = await postdb.findOne({ slug: id });
 

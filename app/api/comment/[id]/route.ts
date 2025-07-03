@@ -3,13 +3,16 @@ import commentdb from "@/app/models/comment";
 
 import { NextResponse, NextRequest } from "next/server";
 
-export async function POST(req: NextRequest) {
+export async function GET(request: NextRequest) {
   try {
     await connectDB();
-    const body = await req.json();
-    const { pid } = body;
+    const id = request.nextUrl.pathname.split("/").pop();
 
-    const alldata = await commentdb.find({ pid: pid });
+    if (!id) {
+      return new NextResponse("Missing 'id' parameter", { status: 400 });
+    }
+
+    const alldata = await commentdb.find({ pid: id });
 
     if (alldata) {
       return NextResponse.json(alldata);

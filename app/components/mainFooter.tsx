@@ -14,6 +14,7 @@ export default function MainFooter() {
         />{" "}
         <div className="space-y-1 text-sm">
           <div>support@businesstrends.com</div>
+          {/* <div><Instagram /> <Twitter /></div> */}
           <div className="text-gray-500">
             &copy; {new Date().getFullYear()} {process.env.NEXT_PUBLIC_NAME}
           </div>
