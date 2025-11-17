@@ -1,0 +1,85 @@
+@import "@radix-ui/themes/styles.css";
+@import "tailwindcss";
+
+.radix-themes {
+  --default-font-family: var(--font-heading-sans);
+  /* --code-font-family: var(--font-pt-mono); */
+}
+
+button,
+[data-radix-ui] button {
+  cursor: pointer !important;
+}
+
+.centered-div {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.heading {
+  font-family: var(--font-heading-sans) !important;
+  @apply text-base tracking-[5px] uppercase mb-10
+}
+
+
+.body {
+  font-family: var(--font-body-serif) !important;
+}
+
+.ql-editor {
+  font-family: var(--font-heading-sans) !important;
+}
+
+.morepostsdiv > div {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 8;
+  overflow: hidden;
+  border-radius: 0.375rem; 
+}
+
+.morepostsdiv > div > img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important; 
+}
+
+.roundedimg > div > img {
+  border-radius: 0.375rem !important; 
+}
+
+.logotext {
+   font-family: var(--font-logo-serif) !important;
+}
+
+/* .ql-font-serif {
+  font-family: 'Your Website Serif Font', serif;
+}
+
+.ql-font-monospace { 
+  font-family: 'Your Website Monospace Font', monospace;
+} */
+
+
+label {
+  @apply font-medium;
+}
+
+
+.text-body > p {
+  @apply pb-2 
+}
+
+
+
+
+
+
+
+
+
+
+
+

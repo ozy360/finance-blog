@@ -1,0 +1,37 @@
+{
+  "name": "siteguyblog",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "start": "next start",
+    "lint": "next lint"
+  },
+  "dependencies": {
+    "@radix-ui/colors": "^3.0.0",
+    "@radix-ui/themes": "^3.2.1",
+    "axios": "^1.8.4",
+    "cookies-next": "^5.1.0",
+    "dropzone": "^6.0.0-beta.2",
+    "imgur": "^2.4.3",
+    "lucide-react": "^0.503.0",
+    "mongodb": "^6.16.0",
+    "mongoose": "^8.13.2",
+    "next": "15.3.1",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-dropzone": "^14.3.8",
+    "react-quill-new": "^3.4.6",
+    "sonner": "^2.0.3",
+    "swiper": "^11.2.6"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  }
+}
