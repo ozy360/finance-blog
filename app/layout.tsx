@@ -33,7 +33,7 @@ const logo = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: "BusinessDisrupts",
+  title: "BusinessTrends",
   description:
     "Stay updated with the latest in finance, business news, investing, and personal finance tips at BusinessDisrupts.",
   icons: {
